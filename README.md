@@ -1,1 +1,1 @@
-# rock_paper_scissors
+This is just some coding practice with javascript into html skeleton code. Going with the curriculum from The Odin Project.
