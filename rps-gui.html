@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <div id="options">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+    <div id="results">
+        <div id="playerScore">Player: 0</div>
+        <div id="compScore">Comp: 0</div>
+    </div>
+
+    <div id="message"></div>
+
+    <script>
+        var choices = ["rock", "paper", "scissors"]
+
+        let wins = 0;
+        let losses = 0;
+
+        const playerScore = document.querySelector("#playerScore");
+        const compScore = document.querySelector("#compScore");
+        const message = document.querySelector("#message");
+
+        var rock = document.querySelector("#rock");
+        rock.addEventListener('click', function(e) {
+            playRound("rock", computerPlay());
+        })
+
+        var paper = document.querySelector("#paper");
+        paper.addEventListener('click', function(e) {
+            playRound("paper", computerPlay());
+        })
+
+        var scissors = document.querySelector("#scissors");
+        scissors.addEventListener('click', function(e) {
+            playRound("scissors", computerPlay());
+        })
+
+        function computerPlay() {
+            var comPick = Math.floor(Math.random() * 3);
+            return choices[comPick];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "rock") {
+                if (computerSelection == "rock") {
+                    message.textContent = "Computer also chose rock. You tied!";
+                } else if (computerSelection == "scissors") {
+                    wins++;
+                    message.textContent = "Computer chose scissors. You won!";
+                } else if (computerSelection == "paper") {
+                    losses++;
+                    message.textContent = "Computer chose paper. You lost!";
+
+                }
+            } else if (playerSelection == "paper") {
+                if (computerSelection == "rock") {
+                    wins++;
+                    message.textContent = "Computer chose rock. You won!";
+                } else if (computerSelection == "scissors") {
+                    losses++;
+                    message.textContent = "Computer chose scissors. You lost!";
+                } else if (computerSelection == "paper") {
+                    message.textContent = "Computer also chose paper. You tied!";
+                }
+            } else if (playerSelection == "scissors") {
+                if (computerSelection == "rock") {
+                    losses++;
+                    message.textContent = "Computer chose rock. You lost!";
+                } else if (computerSelection == "scissors") {
+                    message.textContent = "Computer also chose scissors. You tied!";
+                } else if (computerSelection == "paper") {
+                    wins++;
+                    message.textContent = "Computer chose paper. You won!";
+                }
+            } else {
+                message.textContent = "That's not a valid answer";
+            }
+            playerScore.textContent = "Player: " + wins;
+            compScore.textContent = "Comp: " + losses;
+            if (wins == 5) {
+                document.open();
+                document.write("<h3>Player reached 5 points and won!</h3>");
+            } else if (losses == 5) {
+                document.open();
+                document.write("<h3>Comp reached 5 points and won!</h3>");
+            }
+        }
+    </script>
+</body>
+
+</html>

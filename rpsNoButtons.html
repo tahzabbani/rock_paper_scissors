@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <script>
+        var choices = ["rock", "paper", "scissors"]
+
+        let wins = 0;
+        let losses = 0;
+
+        function computerPlay() {
+            var comPick = Math.floor(Math.random() * 3);
+            return choices[comPick];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "rock") {
+                if (computerSelection == "rock") {
+                    return "Computer also chose rock. You tied!";
+                } else if (computerSelection == "scissors") {
+                    wins++;
+                    return "Computer chose scissors. You won!";
+                } else if (computerSelection == "paper") {
+                    losses++;
+                    return "Computer chose paper. You lost!";
+
+                }
+            } else if (playerSelection == "paper") {
+                if (computerSelection == "rock") {
+                    wins++;
+                    return "Computer chose rock. You won!";
+                } else if (computerSelection == "scissors") {
+                    losses++;
+                    return "Computer chose scissors. You lost!";
+                } else if (computerSelection == "paper") {
+                    return "Computer also chose paper. You tied!";
+                }
+            } else if (playerSelection == "scissors") {
+                if (computerSelection == "rock") {
+                    losses++;
+                    return "Computer chose rock. You lost!";
+                } else if (computerSelection == "scissors") {
+                    return "Computer also chose scissors. You tied!";
+                } else if (computerSelection == "paper") {
+                    wins++;
+                    return "Computer chose paper. You won!";
+                }
+            } else {
+                return "That's not a valid answer";
+            }
+
+        }
+        for (var i = 0; i < 5; i++) {
+            var playSel = prompt("Rock, paper, or scissors?");
+            playSel = playSel.toLowerCase();
+            while (playSel != "rock" && playSel != "paper" && playSel != "scissors") {
+                playSel = prompt("Not a valid answer. Rock, paper, or scissors?");
+                playSel = playSel.toLowerCase();
+            }
+            var compSel = computerPlay();
+            console.log(playRound(playSel, compSel));
+            console.log("wins: " + wins + " losses: " + losses);
+        }
+    </script>
+</body>
+
+</html>
