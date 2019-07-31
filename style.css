@@ -1,0 +1,45 @@
+.btn {
+    width: 150px;
+    height: 150px;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 5px;
+    background-color: white;
+    border: 7px solid white;
+    border-radius: 20%;
+}
+
+.btn:hover {
+    border-color: black;
+    transform: scale(1.05, 1.05);
+}
+
+body {
+    background-color: blanchedalmond;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 30px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 150px;
+    position: relative;
+    font-family: 'Darker Grotesque', sans-serif;
+}
+
+#options {
+    text-align: center;
+    padding-top: 100px;
+}
+
+#results {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#message {
+    text-align: center;
+    margin-top: 30px;
+}
